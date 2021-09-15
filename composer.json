@@ -1,0 +1,17 @@
+{
+    "name": "monkeyhh/pdo",
+    "description": "test",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Monkeyhh\\Pdo\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "郇永超",
+            "email": "5422156+yong_chao_ling@user.noreply.gitee.com"
+        }
+    ],
+    "require": {}
+}
