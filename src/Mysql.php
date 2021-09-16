@@ -1,10 +1,10 @@
 <?php
-namespace Monkeyhh\PDO;
+namespace Monkeyhh\Pdo;
 
 /**
  * simple Pdo for CRUD
  * Class Mysql
- * @package Monkeyhh\PDO
+ * @package Monkeyhh\Pdo
  */
 class Mysql
 {

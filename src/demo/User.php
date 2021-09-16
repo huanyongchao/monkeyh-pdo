@@ -1,7 +1,7 @@
 <?php
 namespace App;
 
-use Monkeyhh\PDO\Model;
+use Monkeyhh\Pdo\Model;
 
 /**
  * Class User

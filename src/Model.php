@@ -1,9 +1,9 @@
 <?php
-namespace Monkeyhh\PDO;
+namespace Monkeyhh\Pdo;
 
 /**
  * Class Model
- * @package Monkeyhh\PDO
+ * @package Monkeyhh\Pdo
  */
 class Model extends Mysql
 {
