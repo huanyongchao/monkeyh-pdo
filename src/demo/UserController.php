@@ -1,5 +1,5 @@
 <?php
-namespace App;
+namespace Monkeyhh\Pdo;
 
 class UserController
 {
