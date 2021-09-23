@@ -3,9 +3,10 @@
     "description": "test",
     "license": "MIT",
     "autoload": {
-        "classmap": ["src/"],
+        "classmap": ["src/","cli/"],
         "psr-4": {
-            "Monkeyhh\\Pdo\\": "src/"
+            "Monkeyhh\\Pdo\\": "src/",
+            "Monkeyhh\\Command\\": "cli/"
         }
     },
 
