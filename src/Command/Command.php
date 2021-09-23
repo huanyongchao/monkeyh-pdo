@@ -77,12 +77,19 @@ class Command
 
             /*doRun 执行方法*/
             $command = $argvs[1];
-            $class_name = "\Monkeyhh\Command\\".ucfirst($command);
-            $ss = $class_name::init($argvs);
+            $class_name = "\Monkeyhh\Command\\" . ucfirst($command);
+            if (class_exists($class_name)) {
+                /**@var $class \Monkeyhh\Command\Base */
+                $class = new $class_name($argvs);
+                $class->exec();
+            } else {
+                $this->showList();
+            }
 
         } catch (\Exception $e) {
-
+            echoLine($e->getMessage(), 'red');
         }
+
     }
 
     /**

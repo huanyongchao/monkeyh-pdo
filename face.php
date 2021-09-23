@@ -1,5 +1,5 @@
 <?php
-/** Q
+/**
  * @param $str
  */
 //1、形如 “12321”, “789987”, “上海自来水来自海上” 的字符串称为“回文”，请写一个尽可能高效/高可维护的函数来判断输入的数字是否为回文；
@@ -29,8 +29,9 @@ function checkTest($str){
 }
 
 $str = '111123321111';
-//checkTest($str);
+checkTest($str);
 //====end_time 11:09======
+
 
 //====2.start_time 11:30======
 function changeNumToStr($num = 0){
@@ -57,7 +58,7 @@ function changeNumToStr($num = 0){
 }
 
 changeNumToStr(12345);
-
+//====2.end_time 12:00  十进制转26进制======
 
 
 //====3 start_time 12:00======
@@ -66,5 +67,16 @@ changeNumToStr(12345);
 //3.并发量比较大，根据日志追踪问题，逐一排查。1.增加缓存、缓解数据库压力。2.部署分布式服务
 //4.排查mysql问题，检查索引，数据量过大的话结合业务内容优化（合理增加索引，优化字段，分表分库等）
 //5.静默数据客户端本地数据存储缓存等
+//====3 end_time 12:20======
 
-//====4 start_time 12:20======
+//====4 start_time 23:20======
+/**
+ *3公里内商家订单平均值
+ * out_merchants  商家表
+ * out_orders 订单表
+ *
+ * 1.统计出半径3公里内的所有订单。 all_orders
+ * 2.统计出半径6公里以内的所有商家   all_merchants  (3公里的客户可能触达的商家最大值)
+ * 3.预算订单量 = all_orders/all_merchants
+ */
+//====4 start_time 00:20  一小时在思考最优方案，尚需讨论======

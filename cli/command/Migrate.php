@@ -1,48 +1,31 @@
 <?php
+
 namespace Monkeyhh\Command;
 
 use Monkeyhh\Command\Base;
-class Migrate implements Base
+
+class Migrate extends Base
 {
-    public function __construct()
-    {
-
-    }
-
     /**
      * @desc 初始化项目
      */
-    public static function init(array $argvs)
+    public function init()
     {
-
-        if(!is_dir(APP_ROOT.'/migrate/')) {
-            mkdir(APP_ROOT.'/migrate/');
+        if (!is_dir(APP_ROOT . '/migrate/')) {
+            mkdir(APP_ROOT . '/migrate/');
         }
 
-        $file_name1 = date("Y-m-d").'__monkey_init.php';
-        $fh = fopen(APP_ROOT.'/migrate/'.$file_name1, "w");
-        $content = "<?php
-
-namespace Monkeyhh\Command;
-
-use Monkeyhh\Command\BaseMigrate;
-
-class BaseMigrateSimple implements BaseMigrate
-{
-    public function up()
-    {
-        // TODO: Implement up() method.
+        $file_name1 = '00000000000_migrate_init.php';
+        $fh = fopen(APP_ROOT . '/migrate/' . $file_name1, "w");
+        $content = "";
+        $res_write = fwrite($fh, $content);
     }
 
-    public function down()
-    {
-        // TODO: Implement down() method.
-    }
-}";
-        $fwrite = fwrite($fh,$content);
-    }
 
-    public function migration()
+    /**
+     * @param array $argvs ['order']
+     */
+    public function create($argvs = [])
     {
 
     }

@@ -12,8 +12,13 @@ class Output
     const STYLE_TITLE = 2;
     const STYLE_DESC = 3;
 
+    private static $_instance = null;
+
     /** @var  Resource */
-    private $file_handle;
+    private $file_handle = null;
+
+    /** @var Style */
+    private $_style = null;
 
     public function __construct()
     {
@@ -21,8 +26,19 @@ class Output
         if (!is_resource($this->file_handle)) {
             throw new \RuntimeException('Unable to open output.');
         }
+        $this->_style = new Style('black');
     }
 
+
+    /**
+     * 获取实例
+     * @return Command|null
+     */
+    public static function getInstance()
+    {
+        self::$_instance = empty(self::$_instance) ? new self() : self::$_instance;
+        return self::$_instance;
+    }
 
     /**
      * @param array $options
@@ -31,29 +47,29 @@ class Output
     {
 
         //标题
-        $style = new Style('yellow');
-        $message = $style->apply($options['title']);
+        $this->_style->setForeground('yellow');
+        $message = $this->_style->apply($options['title']);
         $this->fwriteWrap($message);
 
         foreach ($options['content'] as $option) {
 
-            foreach($option as $key=>$item) {
+            foreach ($option as $key => $item) {
                 if ($key == 0) {
 
-                    $style = new Style('green');
+                    $this->_style->setForeground('yellow');
                     $option[0] = sprintf('%-6s', $option[0]);
 
-                    $message = $style->apply($option[0] . "\t");
+                    $message = $this->_style->apply($option[0] . "\t");
                     fwrite($this->file_handle, $message);
 
                 } elseif ($key < count($option) - 1) {
-                    $style = new Style('green');
+                    $this->_style->setForeground('yellow');
                     $option[1] = sprintf('%-15s', $option[1]);
-                    $message = $style->apply($option[1] . "\t");
+                    $message = $this->_style->apply($option[1] . "\t");
                     fwrite($this->file_handle, $message);
                 } else {
-                    $style = new Style('black');
-                    $message = $style->apply($option[count($option) - 1]);
+                    $this->_style->setForeground('yellow');
+                    $message = $this->_style->apply($option[count($option) - 1]);
                     $this->fwriteWrap($message);
                 }
             }
@@ -66,11 +82,35 @@ class Output
 
     /**
      * @param $message
-     * @param int $style
+     * @param string $before_cut
+     * @param string $end_cut
+     * @param string $style "yellow|black|red|green|..."
+     * @return bool
      */
-    public function outPut($message, $style = 1)
+    public function outPut($message, $before_cut = "", $end_cut = "", $style = 'black')
     {
 
+        $this->_style->setForeground($style);
+        $message = sprintf("%s%s%s", $before_cut, $message, $end_cut);
+        $message = $this->_style->apply($message);
+        fwrite($this->file_handle, $message);
+        $this->fwriteWrap();
+        return true;
+    }
+
+    /**
+     * @param $message
+     * @param string $before_cut
+     * @param string $end_cut
+     * @param string $style
+     * @return bool
+     */
+    public function outPutLine($message, $before_cut = "", $end_cut = "", $style = 'black')
+    {
+        $this->_style->setForeground($style);
+        $message = sprintf("%s%s%s", $before_cut, $message, $end_cut);
+        $message = $this->_style->apply($message);
+        fwrite($this->file_handle, $message);
         return true;
     }
 

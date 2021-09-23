@@ -67,13 +67,22 @@ function echoLine()
 {
 
     $message = '';
-    foreach (func_get_args() as $item) {
+    $message_arr = func_get_args();
+
+    foreach ($message_arr as $item) {
         $message .= toString($item) . ' ';
     }
 
     $text = '[PID ' . getmypid() . ']' . date('Y-m-d H:i:s') . ' ' . $message;
+
+
+    if(end($message_arr) == 'red') {
+        $text = substr($text,0,strlen($text) - 4);
+        $text =  sprintf("\033[31m%s\033[39m", $text);
+    }
+
     if (isCli()) {
-        echo $text . PHP_EOL;
+        echo "" . $text . PHP_EOL;
     } else {
         echo $text . '<br/>';
     }
