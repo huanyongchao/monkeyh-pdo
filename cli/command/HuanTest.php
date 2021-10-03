@@ -23,5 +23,6 @@ class huanTest extends Base
         echo 8;
         echo 9;
         echo 10;
+        echo 11;
     }
 }
