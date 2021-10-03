@@ -15,8 +15,10 @@ class Base
     private $_argvs = [];
 
     /**
+     *
      * @param $argvs
      * @return mixed
+     *
      */
     public function __construct(array $argvs)
     {
