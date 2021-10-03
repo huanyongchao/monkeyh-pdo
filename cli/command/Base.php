@@ -58,8 +58,10 @@ class Base
     }
 
     /**
+     *
      * show desc while function is not exists
      * @return bool
+     *
      */
     public final function showDesc()
     {
