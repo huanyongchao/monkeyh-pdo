@@ -19,5 +19,6 @@ class huanTest extends Base
         echo 234;
         echo 345;
         echo 678;
+        echo 789;
     }
 }
