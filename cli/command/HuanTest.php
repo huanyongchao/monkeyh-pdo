@@ -15,6 +15,6 @@ class huanTest extends Base
 {
     public function test()
     {
-
+        echo 123;
     }
 }
