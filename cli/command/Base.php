@@ -42,8 +42,10 @@ class Base
     }
 
     /**
+     *
      * exec command
      * @return bool
+     *
      */
     public final function exec()
     {
