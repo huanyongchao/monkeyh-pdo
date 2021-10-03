@@ -122,10 +122,12 @@ class Base
     }
 
     /**
+     *
      * @param string $message
      * @param string $before_cut
      * @param string $end_cut
      * @param string $style
+     *
      */
     public final function outPut($message = '', $before_cut = '', $end_cut = '', $style = 'black')
     {
