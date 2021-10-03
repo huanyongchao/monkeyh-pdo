@@ -13,5 +13,8 @@ use Monkeyhh\Command\Base;
  */
 class huanTest extends Base
 {
+    public function test()
+    {
 
+    }
 }
