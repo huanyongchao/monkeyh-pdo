@@ -8,7 +8,14 @@ namespace Monkeyhh\Pdo;
  */
 class Mysql
 {
+    /**
+     * @var \PDO
+     */
     private static $_write = null;
+
+    /**
+     * @var \PDO
+     */
     private static $_read = null;
 
     private static function pdo($config)
@@ -21,7 +28,7 @@ class Mysql
             "mysql:dbname={$dbname};host={$host};port={$port}",
             $config['username'],
             $config['password'],
-            $options
+            array(\PDO::MYSQL_ATTR_INIT_COMMAND => "set names utf8")
         );
     }
 
@@ -117,5 +124,15 @@ class Mysql
         $stmt = self::$_write->prepare($statement);
         $stmt->execute($input_parameters);
         return $stmt->rowCount();
+    }
+
+    /**
+     * @param $sql
+     * @return
+     */
+    public static function execute($sql){
+        $exec_res = self::$_write->exec($sql);
+        echoLine(self::$_write->errorInfo(),'red');
+        return $exec_res;
     }
 }

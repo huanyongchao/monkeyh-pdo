@@ -43,7 +43,7 @@ class Base
      * exec command
      * @return bool
      */
-    public function exec()
+    public final function exec()
     {
         $func_name = $this->_func_name;
 
@@ -57,7 +57,7 @@ class Base
      * show desc while function is not exists
      * @return bool
      */
-    public function showDesc()
+    public final function showDesc()
     {
 
         $reflection = new \ReflectionClass($this->_class_name);
@@ -121,7 +121,7 @@ class Base
      * @param string $end_cut
      * @param string $style
      */
-    public function outPut($message = '', $before_cut = '', $end_cut = '', $style = 'black')
+    public final function outPut($message = '', $before_cut = '', $end_cut = '', $style = 'black')
     {
         Output::getInstance()->outPut($message, $before_cut, $end_cut, $style);
         return true;
@@ -133,7 +133,7 @@ class Base
      * @param string $end_cut
      * @param string $style
      */
-    public function outPutLine($message = '', $before_cut = '', $end_cut = '', $style = 'black')
+    public final function outPutLine($message = '', $before_cut = '', $end_cut = '', $style = 'black')
     {
         Output::getInstance()->outPutLine($message, $before_cut, $end_cut, $style);
         return true;

@@ -12,7 +12,7 @@ class Model extends Mysql
     public static $_table_name = '';
     public static $_prefix = '';
 
-    public static $_order = [];
+    public static $_order = '';
 
     public static function __callStatic($func, $arguments)
     {
@@ -51,6 +51,4 @@ class Model extends Mysql
     {
 
     }
-
-
 }
